@@ -107,15 +107,15 @@ class Node:
     self.flip_colors()
 
     if self.right and is_red(self.right.left):
-      self.right = self.right.rotate_right()
-      self = self.rotate_left()
+      self.right = self.right.rotate_left()
+      self = self.rotate_right()
 
     return self
 
   def move_red_right(self):
     self.flip_colors()
 
-    if self.left and is_red(self.left):
+    if self.left and is_red(self.left.left):
       self = self.rotate_right()
 
     return self
