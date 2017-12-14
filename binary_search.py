@@ -19,7 +19,8 @@ def binary_search(seq, value):
 
 
 if __name__ == '__main__':
-    print binary_search([1, 2, 3, 4], 1)
-    print binary_search([1, 2, 3, 4], 4)
-    print binary_search([1, 2, 3, 4], 5)
+  seq = [1, 2, 3, 4]
+  assert binary_search(seq, 1) == 0
+  assert binary_search(seq, 4) == 3
+  assert binary_search(seq, 5) is None
     

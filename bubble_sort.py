@@ -16,5 +16,8 @@ def bubble_sort(seq, order=lambda x, y: x < y):
 
 if __name__ == '__main__':
     seq = [2, 1, 4, 3]
-    print bubble_sort(seq)
+    assert bubble_sort(seq) == [1, 2, 3, 4]
+    
+    seq = [2, 1, 4, 3]
+    assert bubble_sort(seq, lambda x, y: x > y) == [4, 3, 2, 1]
     

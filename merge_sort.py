@@ -33,7 +33,9 @@ def merge(x, y, order):
 
 
 if __name__ == '__main__':
-    seq = [2, 1, 4, 3]
-    print merge_sort(seq)
-    print merge_sort(seq, lambda x, y: x > y)
+  seq = [2, 1, 4, 3]
+  assert merge_sort(seq) == [1, 2, 3, 4]
+
+  seq = [2, 1, 4, 3]
+  assert merge_sort(seq, lambda x, y: x > y) == [4, 3, 2, 1]
     

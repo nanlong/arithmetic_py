@@ -29,6 +29,9 @@ def sift_down(seq, start, finish, order):
       break
 
 if __name__ == '__main__':
-    print heap_sort([2, 1, 4, 3])
-    print heap_sort([2, 1, 4, 3], lambda x, y: x > y)
+  seq = [2, 1, 4, 3]
+  assert heap_sort(seq) == [1, 2, 3, 4]
+
+  seq = [2, 1, 4, 3]
+  assert heap_sort(seq, lambda x, y: x > y) == [4, 3, 2, 1]
     
