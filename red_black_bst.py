@@ -251,3 +251,7 @@ if __name__ == '__main__':
     tree.delete_max()
     assert(tree.size() == 6)
     assert(tree.get("X") is None)
+
+    tree.delete("S")
+    assert(tree.size() == 5)
+    assert(tree.get("S") is None)
