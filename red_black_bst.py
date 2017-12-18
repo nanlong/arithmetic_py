@@ -177,8 +177,74 @@ class Node:
         self.right = self.right.delete(key)
 
     return self.balance()
-    
 
+  def pre_order(self):
+    stack = [self]
+    res = []
+    
+    while len(stack):
+      node = stack.pop()
+      res.append(node.key)
+
+      if node.right:
+        stack.append(node.right)
+
+      if node.left:
+        stack.append(node.left)
+
+    return res
+
+  def in_order(self):
+    stack = []
+    res = []
+    p = self
+
+    while p or len(stack):
+      while p:
+        stack.append(p)
+        p = p.left
+
+      cur = stack.pop()
+      res.append(cur.key)
+      p = cur.right
+
+    return res
+
+  def post_order(self):
+    stack = [self]
+    res = []
+    
+    while len(stack):
+      node = stack.pop()
+      res.append(node.key)
+
+      if node.left:
+        stack.append(node.left)
+
+      if node.right:
+        stack.append(node.right)
+
+    res.reverse()
+    return res
+
+  def level_order(self):
+    from collections import deque
+    queue = deque([self])
+    res = []
+
+    while len(queue):
+      node = queue.popleft()
+      res.append(node.key)
+
+      if node.left:
+        queue.append(node.left)
+
+      if node.right:
+        queue.append(node.right)
+
+    return res
+
+    
 class RedBlackBST:
 
   def __init__(self):
@@ -229,6 +295,25 @@ class RedBlackBST:
   def size(self):
     return size(self.root)
 
+  def pre_order(self):
+    if self.root:
+      return self.root.pre_order()
+    return []
+
+  def in_order(self):
+    if self.root:
+      return self.root.in_order()
+    return []
+
+  def post_order(self):
+    if self.root:
+      return self.root.post_order()
+    return []
+
+  def level_order(self):
+    if self.root:
+      return self.root.level_order()
+    return []
 
 if __name__ == '__main__':
     tree = RedBlackBST()
@@ -242,6 +327,11 @@ if __name__ == '__main__':
     tree.put("H", 7)
     tree.put("M", 8)
 
+    assert tree.pre_order() == ['M', 'E', 'C', 'A', 'H', 'S', 'R', 'X']
+    assert tree.in_order() == ['A', 'C', 'E', 'H', 'M', 'R', 'S', 'X']
+    assert tree.post_order() == ['A', 'C', 'H', 'E', 'R', 'X', 'S', 'M']
+    assert tree.level_order() == ['M', 'E', 'S', 'C', 'H', 'R', 'X', 'A']
+   
     assert tree.size() == 8
 
     tree.delete_min()
@@ -255,3 +345,5 @@ if __name__ == '__main__':
     tree.delete("S")
     assert tree.size() == 5
     assert tree.get("S") is None
+
+    
