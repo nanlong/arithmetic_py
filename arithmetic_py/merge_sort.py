@@ -4,7 +4,7 @@ def merge_sort(seq, order=lambda x, y: x < y):
   if length <= 1:
     return seq
 
-  pivot = length / 2
+  pivot = length // 2
   left = merge_sort(seq[:pivot], order)
   right = merge_sort(seq[pivot:], order)
 
@@ -31,11 +31,4 @@ def merge(x, y, order):
 
   return result
 
-
-if __name__ == '__main__':
-  seq = [2, 1, 4, 3]
-  assert merge_sort(seq) == [1, 2, 3, 4]
-
-  seq = [2, 1, 4, 3]
-  assert merge_sort(seq, lambda x, y: x > y) == [4, 3, 2, 1]
     
