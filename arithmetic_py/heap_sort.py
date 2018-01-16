@@ -1,10 +1,10 @@
 def heap_sort(seq, order=lambda x, y: x < y):
   length = len(seq)
 
-  for start in xrange(length / 2 - 1, -1, -1):
+  for start in range(length // 2 - 1, -1, -1):
     sift_down(seq, start, length - 1, order)
 
-  for finish in xrange(length - 1, 0, - 1):
+  for finish in range(length - 1, 0, - 1):
     seq[0], seq[finish] = seq[finish], seq[0]
     sift_down(seq, 0, finish - 1, order)
 
@@ -28,10 +28,4 @@ def sift_down(seq, start, finish, order):
     else:
       break
 
-if __name__ == '__main__':
-  seq = [2, 1, 4, 3]
-  assert heap_sort(seq) == [1, 2, 3, 4]
-
-  seq = [2, 1, 4, 3]
-  assert heap_sort(seq, lambda x, y: x > y) == [4, 3, 2, 1]
     
