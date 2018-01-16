@@ -7,7 +7,7 @@ def binary_search(seq, value):
     if start > end:
       break
 
-    mid = (start + end) / 2
+    mid = (start + end) // 2
     mid_value = seq[mid]
 
     if value < mid_value:
