@@ -30,10 +30,4 @@ def reverse2(linked_list):
   linked_list.next = None
   return new_list
 
-if __name__ == '__main__':
-    linked_list = LinkedList(1, LinkedList(2, LinkedList(3)))
-    print reverse(linked_list).elem
-
-    linked_list = LinkedList(1, LinkedList(2, LinkedList(3)))
-    print reverse2(linked_list).elem
     
