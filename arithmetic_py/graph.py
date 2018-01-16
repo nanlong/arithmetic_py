@@ -157,28 +157,6 @@ class BreadthFirstPaths:
 
     path.append(self._s)
     return list(reversed(path))
-  
-if __name__ == '__main__':
-    tiny_g = [
-      (0, 5),
-      (2, 4),
-      (2, 3),
-      (1, 2),
-      (0, 1),
-      (3, 4),
-      (3, 5),
-      (0, 2),
-    ]
-
-    g = Graph()
-
-    for v, e in tiny_g:
-      g.add_edge(v, e)
-
-    # dfs = DepthFirstSearch(g, 0)
-    
-    path = BreadthFirstPaths(g, 0)
-    print(path.path_to(3))
 
     
     
