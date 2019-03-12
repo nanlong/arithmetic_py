@@ -21,10 +21,9 @@ class LinkedList:
 
     for _ in range(n):
       data = randint(0, 100)
-      node = LinkedNode(data, next_node=self.tail)
-      self.tail.prev_node = node
+      node = LinkedNode(data, prev_node=prev_node, next_node=self.tail)
       prev_node.next_node = node
-      node.prev_node = prev_node
+      self.tail.prev_node = node
       prev_node = node
 
     return self.head, self.tail
@@ -33,31 +32,31 @@ class LinkedList:
 class Solution:
 
   def quick_sort(self, head, low, high):
-    if not head and not head.next_node:
+    if not head and not head.next_node or low == high:
       return
 
-    if low != high:
-      h, t = low, high
-      k = h.data
+    h, t = low, high
+    k = h.data
 
-      while h != t:
-        while h != t and t.data >= k:
-          t = t.prev_node
+    while h != t:
 
-        h.data = t.data
+      while h != t and t.data >= k:
+        t = t.prev_node
 
-        while h != t and h.data <= k:
-          h = h.next_node
+      h.data = t.data
 
-        t.data = h.data
+      while h != t and h.data <= k:
+        h = h.next_node
 
-      h.data = k
+      t.data = h.data
 
-      if low != h:
-        self.quick_sort(head, low, h.prev_node)
+    h.data = k
 
-      if h != high:
-        self.quick_sort(head, h.next_node, high)
+    if low != h:
+      self.quick_sort(head, low, h.prev_node)
+
+    if h != high:
+      self.quick_sort(head, h.next_node, high)
 
 
 if __name__ == "__main__":
